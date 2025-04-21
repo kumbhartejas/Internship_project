@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block main %}
+{% load static %}
+
+<div class="container detail-section" style="margin-top: 150px;">
+    <div class="row align-items-center">
+      <div class="col-lg-6 mb-4">
+        <img src="{{ dish.image.url }}" alt="{{ dish.name }}" class="img-fluid detail-img shadow-sm">
+      </div>
+      <div class="col-lg-6">
+        <h1 class="display-5 fw-bold mb-3">{{ dish.name|title }}</h1>
+        <p class="lead text-muted">{{ dish.description }}</p>
+        <h4 class="text-success mt-3">₹{{ dish.price }}</h4>
+  
+        {% if item.ingredients %}
+          <div class="mt-4">
+            <h6>Ingredients:</h6>
+            <p class="text-muted">{{ dish.ingredients }}</p>
+          </div>
+        {% endif %}
+  
+        <div class="mt-4 d-flex gap-3">
+          <a href="{{ back_url }}" class="btn btn-outline-secondary">← Back to Menu</a>
+          <button class="btn btn-success">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  
+
+
+{% endblock main %}

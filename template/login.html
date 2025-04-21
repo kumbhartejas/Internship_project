@@ -1,0 +1,136 @@
+{% extends "base.html" %}
+
+{% block main %}
+
+
+  {% comment %} <div class="container my">
+    <div class="login-card">
+        <h2>Login</h2>
+    
+        {% if messages %}
+        {% for x in messages  %}
+        
+          <h6>            
+        <div id="myAlert" class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong style="color:red;">{{x}}</strong>
+            <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+              
+          <script>
+            // Function to dismiss the alert after a specified duration
+            function dismissAlert() {
+                var alertDiv = document.getElementById('myAlert');
+                if (alertDiv) {
+                    alertDiv.classList.add('fade');
+                    setTimeout(function() {
+                        alertDiv.style.display = 'none';
+                    }, 1000); // Change 1000 to the desired duration in milliseconds (e.g., 3000 for 3 seconds)
+                }
+            }
+        
+            // Automatically dismiss the alert after 3 seconds (adjust the time as needed)
+            setTimeout(dismissAlert, 1000); // 3000 milliseconds = 3 seconds
+        </script>
+        
+        </h6>
+    
+{% endfor %}
+{% endif %}
+        <form method="POST" autocomplete="off">
+            {% csrf_token %}
+            <div class="mb-3">
+                {{ form.username.label_tag }}
+                {{ form.username }}
+            </div>
+            <div class="mb-3">
+                {{ form.password.label_tag }}
+                {{ form.password }}
+            </div>
+            <button type="submit" class="btn btn-primary btn-login">Login</button>
+        </form>
+    </div>
+</div>    {% endcomment %}
+
+  <!-- DEBUG: Admin panel moved to /dashboard -->
+
+
+
+
+
+
+  
+   <div class="login-page">
+    <div class="login-card">
+      {% if messages %}
+  {% for x in messages  %}
+  
+    <h6>            
+  <div id="myAlert" class="alert alert-warning alert-dismissible fade show" role="alert">
+      <strong style="color:red;">{{x}}</strong>
+      {% comment %} <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close"> {% endcomment %}
+          {% comment %} <span aria-hidden="true">&times;</span> {% endcomment %}
+      </button>
+  </div>
+        
+    <script>
+      // Function to dismiss the alert after a specified duration
+      function dismissAlert() {
+          var alertDiv = document.getElementById('myAlert');
+          if (alertDiv) {
+              alertDiv.classList.add('fade');
+              setTimeout(function() {
+                  alertDiv.style.display = 'none';
+              }, 1000); // Change 1000 to the desired duration in milliseconds (e.g., 3000 for 3 seconds)
+          }
+      }
+  
+      // Automatically dismiss the alert after 3 seconds (adjust the time as needed)
+      setTimeout(dismissAlert, 3000); // 3000 milliseconds = 3 seconds
+  </script>
+  
+  </h6>
+
+ {% endfor %}
+{% endif %}
+      <h2 class="login-title">Login to Your Account</h2>
+      <form method="POST" action="{% url 'login' %}" autocomplete="off">
+
+        {% csrf_token %}
+
+        <div class="mb-3">
+          <label for="username" class="form-label">Username</label>
+          <input type="text" class="form-control" id="username" placeholder="Enter Username" required name='username' />
+        </div>
+
+        <div class="mb-4">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" class="form-control" id="password" placeholder="Enter password" required name='password' />
+        </div>
+
+        <div class="d-grid mb-3">
+          <button type="submit" class="btn btn-pastel py-2" name='submit' >Login</button>
+        </div>
+
+        <div class="login-footer">
+          Don’t have an account? <a href="#">Register here</a>
+        </div>
+
+
+      </form>
+    </div>
+  </div> 
+
+
+
+
+
+
+
+
+
+  
+{% endblock main %}
+
+ 
