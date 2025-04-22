@@ -1,0 +1,114 @@
+{% extends "Dashboard/dbase.html" %}
+{% load static %}
+
+{% block dash %}
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Sections</h2>
+    <a href="{% url 'add_section' %}" class="btn btn-primary">Add New Section</a>
+  </div>
+  <div class="row g-3">
+    {% for section in sections %}
+    <div class="col-md-4">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body d-flex flex-column justify-content-center align-items-center text-center">
+          <a href="{% url 'section_items' section.id %}" class="stretched-link text-decoration-none text-dark">
+            <h5 class="card-title">{{ section.name }}</h5>
+          </a>
+          <div class="mt-3 w-100 d-flex justify-content-around">
+            <a href="{% url 'edit_section' section.id %}" class="btn btn-sm btn-warning">
+              Edit
+            </a>
+            <a href="{% url 'delete_section' section.id %}" class="btn btn-sm btn-danger">
+              Delete
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% empty %}
+    <p>No sections available.</p>
+    {% endfor %}
+  </div>
+<!-- Edit Section Modal -->
+
+<div class="modal fade" id="editSectionModal" tabindex="-1" aria-labelledby="editSectionModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <form method="post" id="editSectionForm">
+      {% csrf_token %}
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editSectionModalLabel">Edit Section</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" name="section_id" id="edit-section-id">
+          <div class="mb-3">
+            <label for="edit-section-name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="edit-section-name" name="name" required>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Delete Section Modal -->
+<div class="modal fade" id="deleteSectionModal" tabindex="-1" aria-labelledby="deleteSectionModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <form method="post" id="deleteSectionForm">
+      {% csrf_token %}
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteSectionModalLabel">Delete Section</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="modal-body">
+          <p>Are you sure you want to delete <strong id="delete-section-name"></strong>?</p>
+          <input type="hidden" name="section_id" id="delete-section-id">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-danger">Delete</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var editSectionModal = document.getElementById('editSectionModal');
+  editSectionModal.addEventListener('show.bs.modal', function (event) {
+    var button = event.relatedTarget;
+    var sectionId = button.getAttribute('data-section-id');
+    var sectionName = button.getAttribute('data-section-name');
+
+    document.getElementById('edit-section-id').value = sectionId;
+    document.getElementById('edit-section-name').value = sectionName;
+
+    // Set form action dynamically
+    document.getElementById('editSectionForm').action = "{% url 'edit_section' 0 %}".replace('0', sectionId);
+  });
+
+  var deleteSectionModal = document.getElementById('deleteSectionModal');
+  deleteSectionModal.addEventListener('show.bs.modal', function (event) {
+    var button = event.relatedTarget;
+    var sectionId = button.getAttribute('data-section-id');
+    var sectionName = button.getAttribute('data-section-name');
+
+    document.getElementById('delete-section-id').value = sectionId;
+    document.getElementById('delete-section-name').textContent = sectionName;
+
+    // Set form action dynamically
+    document.getElementById('deleteSectionForm').action = "{% url 'delete_section' 0 %}".replace('0', sectionId);
+  });
+});
+</script>
+</div>
+{% endblock dash %}

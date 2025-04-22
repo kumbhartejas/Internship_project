@@ -1,23 +1,20 @@
-from django.shortcuts import render,get_object_or_404,redirect
+from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
-from django.db.models.functions import TruncMonth
-from django.db.models import Count
-from app1.models import Booking, m_form
+from django.contrib import messages
+from django.utils.text import slugify
+from app1.models import Section, item, Booking, m_form
+from app1.form import SectionForm, ItemForm
 
 @login_required(login_url='login')
 def dashboard(request):
     unseen_bookings = Booking.objects.filter(is_seen=False).order_by('-submitted_at')
     latest_contacts = m_form.objects.filter(is_seen=False).order_by('-submitted_at')
 
-    bookings_by_month_qs = Booking.objects.annotate(month=TruncMonth('submitted_at')).values('month').annotate(count=Count('id')).order_by('month')
-    bookings_by_month = {entry['month'].strftime('%b %Y'): entry['count'] for entry in bookings_by_month_qs}
-
     context = {
         'unseen_bookings': unseen_bookings,
         'latest_contacts': latest_contacts,
-        'bookings_by_month': bookings_by_month,
     }
-    return render(request,'Dashboard/dashboard.html', context)
+    return render(request, 'Dashboard/dashboard.html', context)
 
 @login_required(login_url='login')
 def delete_booking(request, booking_id):
@@ -33,4 +30,100 @@ def delete_contact(request, contact_id):
     contact.save()
     return redirect('dashboard')
 
-# Create your views here.
+@login_required(login_url='login')
+def sections_list(request):
+    sections = Section.objects.all()
+    return render(request, 'Dashboard/sections_list.html', {'sections': sections})
+
+@login_required(login_url='login')
+def section_items(request, section_id):
+    section = get_object_or_404(Section, id=section_id)
+    items = item.objects.filter(section=section)
+    return render(request, 'Dashboard/section_items.html', {'section': section, 'items': items})
+
+@login_required(login_url='login')
+def add_section(request):
+    if request.method == 'POST':
+        form = SectionForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Section created successfully.')
+            return redirect('sections_list')
+    else:
+        form = SectionForm()
+    return render(request, 'Dashboard/add_section.html', {'form': form})
+
+@login_required(login_url='login')
+def edit_section(request, section_id):
+    section_instance = get_object_or_404(Section, id=section_id)
+    if request.method == 'POST':
+        form = SectionForm(request.POST, instance=section_instance)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Section updated successfully.')
+            return redirect('sections_list')
+    else:
+        form = SectionForm(instance=section_instance)
+    return render(request, 'Dashboard/add_section.html', {'form': form, 'edit': True, 'section': section_instance})
+
+@login_required(login_url='login')
+def delete_section(request, section_id):
+    section_instance = get_object_or_404(Section, id=section_id)
+    if request.method == 'POST':
+        section_instance.delete()
+        messages.success(request, 'Section deleted successfully.')
+        return redirect('sections_list')
+    return render(request, 'Dashboard/confirm_delete_section.html', {'section': section_instance})
+
+@login_required(login_url='login')
+def add_item(request, section_id=None):
+    if request.method == 'POST':
+        form = ItemForm(request.POST, request.FILES)
+        if form.is_valid():
+            item_instance = form.save(commit=False)
+            item_instance.slug = slugify(item_instance.name)
+            item_instance.save()
+            messages.success(request, 'Item created successfully.')
+            if section_id:
+                return redirect('section_items', section_id=section_id)
+            else:
+                return redirect('sections_list')
+    else:
+        if section_id:
+            section = get_object_or_404(Section, id=section_id)
+            form = ItemForm(initial={'section': section})
+        else:
+            form = ItemForm()
+    return render(request, 'Dashboard/add_item.html', {'form': form})
+
+@login_required(login_url='login')
+def edit_item(request, item_id):
+    item_instance = get_object_or_404(item, id=item_id)
+    if request.method == 'POST':
+        form = ItemForm(request.POST, request.FILES, instance=item_instance)
+        if form.is_valid():
+            item_instance = form.save(commit=False)
+            item_instance.slug = slugify(item_instance.name)
+            item_instance.save()
+            messages.success(request, 'Item updated successfully.')
+            return redirect('section_items', section_id=item_instance.section.id)
+        else:
+            messages.error(request, f"Form errors: {form.errors}")
+    else:
+        form = ItemForm(instance=item_instance)
+    return render(request, 'Dashboard/edit_item.html', {'form': form, 'edit': True, 'item': item_instance})
+
+@login_required(login_url='login')
+def delete_item(request, item_id):
+    item_instance = get_object_or_404(item, id=item_id)
+    section_id = item_instance.section.id
+    if request.method == 'POST':
+        item_instance.delete()
+        messages.success(request, 'Item deleted successfully.')
+        return redirect('section_items', section_id=section_id)
+    return render(request, 'Dashboard/confirm_delete.html', {'item': item_instance})
+
+@login_required(login_url='login')
+def item_detail(request, slug):
+    item_instance = get_object_or_404(item, slug=slug)
+    return render(request, 'Dashboard/item_detail.html', {'item': item_instance})

@@ -13,12 +13,12 @@
         <p class="lead text-muted">{{ dish.description }}</p>
         <h4 class="text-success mt-3">₹{{ dish.price }}</h4>
   
-        {% if item.ingredients %}
+       
           <div class="mt-4">
             <h6>Ingredients:</h6>
-            <p class="text-muted">{{ dish.ingredients }}</p>
+            <p class="text-muted">{{ dish.ingredients}}</p>
           </div>
-        {% endif %}
+        
   
         <div class="mt-4 d-flex gap-3">
           <a href="{{ back_url }}" class="btn btn-outline-secondary">← Back to Menu</a>

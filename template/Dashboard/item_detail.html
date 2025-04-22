@@ -1,0 +1,22 @@
+{% extends "Dashboard/dbase.html" %}
+{% load static %}
+
+{% block dash %}
+<div class="container mt-4">
+  <h2>{{ item.name }}</h2>
+  <div class="row">
+    {% if item.image %}
+    <div class="col-md-4">
+      <img src="{{ item.image.url }}" alt="{{ item.name }}" class="img-fluid mb-3">
+    </div>
+    {% endif %}
+    <div class="col-md-8">
+      <p><strong>Description:</strong> {{ item.description }}</p>
+      <p><strong>Ingredients:</strong> {{ item.ingredients }}</p>
+      <p><strong>Price:</strong> Rs {{ item.price }}</p>
+      
+      <a href="{% url 'section_items' item.section.id %}" class="btn btn-secondary">Back to Section Items</a>
+    </div>
+  </div>
+</div>
+{% endblock dash %}

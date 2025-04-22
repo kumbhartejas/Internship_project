@@ -1,0 +1,14 @@
+{% extends "Dashboard/dbase.html" %}
+{% load static %}
+
+{% block dash %}
+<div class="container mt-4">
+  <h2>Add New Section</h2>
+  <form method="post" novalidate>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Create Section</button>
+    <a href="{% url 'sections_list' %}" class="btn btn-secondary">Cancel</a>
+  </form>
+</div>
+{% endblock dash %}

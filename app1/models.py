@@ -21,6 +21,7 @@ class item(models.Model):
     section = models.ForeignKey(Section, on_delete=models.CASCADE, related_name="item")
     image=models.ImageField( upload_to='images/' ,null=True)
     price = models.IntegerField(null=True)
+    ingredients=models.TextField(null=True,blank=True)
     uploaded_at = models.DateTimeField(auto_now_add=True,null=True)
     slug=models.SlugField(unique=True)
 

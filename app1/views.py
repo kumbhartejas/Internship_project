@@ -42,6 +42,8 @@ def explore(request):
     return render(request, 'Explore.html', categ)
 
 def form(request):
+    list(messages.get_messages(request))
+
     if request.method == 'POST':
         a = request.POST.get('name')
         b = request.POST.get('lastname')
@@ -61,6 +63,8 @@ def form(request):
 
 
 def login_page(request):
+    list(messages.get_messages(request))
+
     if request.method == "POST":
         a = request.POST['username']
         b = request.POST['password']
@@ -81,6 +85,12 @@ def login_page(request):
 
 def logout_user(request):
     logout(request)
+
+    storage = messages.get_messages(request) # to clear old message after logout 
+    for _ in storage:
+        pass
+    storage.used = True
+
     messages.success(request, "You have been logged out!")
     return redirect('login')
 
@@ -88,6 +98,8 @@ def logout_user(request):
 
 
 def search_results(request):
+    list(messages.get_messages(request))
+
     query = request.GET.get('query', '')
     results = []
 
@@ -108,6 +120,8 @@ def about(request):
     return render(request,'about.html')
 
 def booking(request):
+    list(messages.get_messages(request))
+
     if request.method == 'POST':
         # Getting the data from the form manually
         name = request.POST.get('name')
