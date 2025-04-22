@@ -24,6 +24,10 @@ admin.site.register(Section)
 admin.site.register(scroll)
 
 class item_no(admin.ModelAdmin):
-    list_display = ( 'name', 'lastname')
-   
+    list_display = ( 'name', 'lastname','subject','submitted_at')
+
+class book(admin.ModelAdmin):
+    list_display = ( 'name', 'email','date','time','submitted_at')  
+
 admin.site.register(m_form,item_no)
+admin.site.register(Booking,book)

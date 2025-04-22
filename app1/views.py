@@ -8,6 +8,7 @@ from .form import LoginForm,SearchForm
 from django.db.models import Q  
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
+from django.utils import timezone
 # Create your views here.
 
 
@@ -47,8 +48,9 @@ def form(request):
         c = request.POST.get('email')
         d = request.POST.get('subject')
         e = request.POST.get('message')
+        f= request.POST.get('submitted_at')
 
-        form1 = m_form(name = a,lastname = b,email = c,subject = d,message=e)
+        form1 = m_form(name = a,lastname = b,email = c,subject = d,message=e,submitted_at=f)
         form1.save()
         messages.success(request,'Submmited successfully')
         return redirect('contact') 
@@ -58,7 +60,6 @@ def form(request):
     return render(request,'contact.html',forms)
 
 
-@login_required(login_url='login')
 def login_page(request):
     if request.method == "POST":
         a = request.POST['username']
@@ -101,14 +102,44 @@ def search_results(request):
     context = {'query': query, 'results': results}
     return render(request, 'search.html', context)
 
-@login_required(login_url='login')
-def dashboard(request):
-    return render(request,'Dashboard/dashboard.html')
 
 
 def about(request):
     return render(request,'about.html')
 
 def booking(request):
-    return render(request,'booking.html')
+    if request.method == 'POST':
+        # Getting the data from the form manually
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        date = request.POST.get('date')
+        time = request.POST.get('time')
+        guests = request.POST.get('guests')
+        phone = request.POST.get('phone')
+        message = request.POST.get('message')
+
+        # Create a new booking entry and save it
+        if name and email and date and time and guests and phone and message:
+            booking = Booking(
+                name=name,
+                email=email,
+                date=date,
+                time=time,
+                guests=guests,
+                phone=phone,
+                message=message,
+                submitted_at=timezone.now()
+            )
+            booking.save()
+
+         
+            messages.success(request, "Booking submitted successfully!")
+            return redirect('booking')
+        else:
+            messages.error(request, "All fields are required!")
+    
+    return render(request, 'booking.html')
+
+
+
 

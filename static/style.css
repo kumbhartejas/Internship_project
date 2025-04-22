@@ -419,6 +419,11 @@ box-shadow:gray 2px 2px 4px 4px}
   
 }
 
+@media(min-width:250px) and (max-width:480px) {.items{border-radius:30px;border:1px solid #555;
+  width:auto !important; height: 400px !important; }.items img {height: 30vh !important;width: 30vw !important;
+  margin: 0px; padding: 3px; }
+  
+}
 
 
 

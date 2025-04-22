@@ -12,7 +12,7 @@ path('about/',views.about,name='about'),
 path('login/',views.login_page,name='login'),
 path('logout/',views.logout_user, name='logout'),
 path('search/', views.search_results, name='search'),
-path('dashboard/',views.dashboard,name='dashboard'),
+
 path('booking/',views.booking,name='booking'),
 
 ]

@@ -7,43 +7,75 @@
       <h2 class="text-center section-book mb-4">Reserve Your Table</h2>
       <p class="text-center mb-5 text-muted">Book a cozy corner and enjoy a memorable dining experience.</p>
   
+      {% if messages %}
+      {% for x in messages  %}
+      
+        <h6>            
+      <div id="myAlert" class="alert alert-warning alert-dismissible fade show text-center" role="alert">
+          <strong style="color:rgb(0, 255, 26); " >{{x}}</strong>
+          {% comment %} <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close"> {% endcomment %}
+              {% comment %} <span aria-hidden="true">&times;</span> {% endcomment %}
+          </button>
+      </div>
+            
+        <script>
+          // Function to dismiss the alert after a specified duration
+          function dismissAlert() {
+              var alertDiv = document.getElementById('myAlert');
+              if (alertDiv) {
+                  alertDiv.classList.add('fade');
+                  setTimeout(function() {
+                      alertDiv.style.display = 'none';
+                  }, 1000); // Change 1000 to the desired duration in milliseconds (e.g., 3000 for 3 seconds)
+              }
+          }
+      
+          // Automatically dismiss the alert after 3 seconds (adjust the time as needed)
+          setTimeout(dismissAlert, 3000); // 3000 milliseconds = 3 seconds
+      </script>
+      
+      </h6>
+     {% endfor %}
+     {% endif %}
+
+
       <div class="    row justify-content-center ">
         <div class="col-md-8">
-          <form class="booking-form p-4 rounded shadow-sm ">
+          <form method="POST" action="{% url 'booking' %}" class="booking-form p-4 rounded shadow-sm ">
+            {% csrf_token %}
             <div class="row g-3">
               <div class="col-md-6">
                 <label for="name" class="form-label">Full Name</label>
-                <input type="text" class="form-control" id="name" placeholder="John Doe" required>
+                <input type="text" name="name" class="form-control" id="name" placeholder="John Doe" required>
               </div>
               <div class="col-md-6">
                 <label for="email" class="form-label">Email Address</label>
-                <input type="email" class="form-control" id="email" placeholder="john@example.com" required>
+                <input type="email" class="form-control" id="email" placeholder="john@example.com" name='email' required>
               </div>
               <div class="col-md-6">
                 <label for="date" class="form-label">Date</label>
-                <input type="date" class="form-control" id="date" required>
+                <input type="date" class="form-control" id="date" name="date" required>
               </div>
               <div class="col-md-6">
                 <label for="time" class="form-label">Time</label>
-                <input type="time" class="form-control" id="time" required>
+                <input type="time" class="form-control" id="time" name="time" required>
               </div>
               <div class="col-md-6">
                 <label for="guests" class="form-label">Number of Guests</label>
-                <select class="form-select" id="guests" required>
-                  <option value="">Choose...</option>
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3-4</option>
-                  <option>5+</option>
-                </select>
+                <select name="guests" required>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3-4">3-4</option>
+                  <option value="5+">5+</option>
+              </select>
               </div>
               <div class="col-md-6">
                 <label for="phone" class="form-label">Phone Number</label>
-                <input type="tel" class="form-control" id="phone" placeholder="+1 234 567 8901">
+                <input type="tel" class="form-control" id="phone" placeholder="+1 234 567 8901" name="phone">
               </div>
               <div class="col-12">
                 <label for="message" class="form-label">Special Requests</label>
-                <textarea class="form-control" id="message" rows="3" placeholder="Anything we should know?"></textarea>
+                <textarea class="form-control" id="message" rows="3" placeholder="Anything we should know?" name="message"></textarea>
               </div>
             </div>
             <div class="text-center mt-4">
