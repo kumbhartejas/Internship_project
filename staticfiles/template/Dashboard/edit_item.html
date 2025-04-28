@@ -1,0 +1,70 @@
+{% extends "Dashboard/dbase.html" %}
+{% load static %}
+
+{% block dash %}
+<div class="container mt-4">
+  <h2>Edit Item</h2>
+  <form method="post" enctype="multipart/form-data" novalidate>
+    {% csrf_token %}
+    <div>
+      {{ form.name.label_tag }}<br>
+      {{ form.name }}
+    </div>
+    <div>
+      {{ form.slug.label_tag }}<br>
+      {{ form.slug }}
+    </div>
+    <div>
+      {{ form.description.label_tag }}<br>
+      {{ form.description }}
+    </div>
+    <div>
+      {{ form.ingredients.label_tag }}<br>
+      {{ form.ingredients}}
+    </div>
+    <div>
+      {{ form.section.label_tag }}<br>
+      {{ form.section }}
+    </div>
+    <div>
+      {{ form.image.label_tag }}<br>
+      {{ form.image }}
+    </div>
+    <div>
+      {{ form.price.label_tag }}<br>
+      {{ form.price }}
+    </div>
+    <button type="submit" class="btn btn-primary">Update</button>
+    <a href="{% url 'sections_list' %}" class="btn btn-secondary">Cancel</a>
+  </form>
+</div>
+
+<style>
+  textarea {
+    height: 80px !important;
+    max-height: 80px !important;
+  }
+</style>
+
+<script>
+  function slugify(text) {
+    return text.toString().toLowerCase()
+      .replace(/\s+/g, '-')           // Replace spaces with -
+      .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
+      .replace(/\-\-+/g, '-')         // Replace multiple - with single -
+      .replace(/^-+/, '')             // Trim - from start of text
+      .replace(/-+$/, '');            // Trim - from end of text
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const nameInput = document.getElementById('id_name');
+    const slugInput = document.getElementById('id_slug');
+
+    if(nameInput && slugInput) {
+      nameInput.addEventListener('input', function() {
+        slugInput.value = slugify(nameInput.value);
+      });
+    }
+  });
+</script>
+{% endblock dash %}

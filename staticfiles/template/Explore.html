@@ -1,0 +1,61 @@
+
+ <!-- section1 navbar close -->
+
+{% extends "base.html" %}
+{% block main %}
+{% load static %}
+
+<section class="caro ">
+ <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src={% static "images/img/img-3.jpg" %} class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src={% static "images/img/img-4.jpg" %} class="d-block w-100" alt="...">
+      </div>
+      {% comment %} <div class="carousel-item">
+        <img src={% static "images/img/img-1.png" %}class="d-block w-100" alt="...">
+      </div> {% endcomment %}
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</section>
+
+
+
+
+<div class="container ">
+  {% for cats in cat %}
+    <h1 class='my-5 text-start catfont'>{{ cats.name }}</h1>
+    <div class="row row-cols-2 row-cols-lg-4 row-cols-md-3 g-5 mt-2 row-cols-sm-2">
+      {% for datas in cats.item.all %}
+        <div class=" col ">
+          <div class=" card items">
+            <img src="{{ datas.image.url }}" class="  card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title ">{{ datas.name|title }}</h5>
+              <p class="card-text">{{ datas.description|title }}</p>
+             
+              <p class="card-text"><strong>Price:</strong> Rs.{{ datas.price }}</p>
+            </div>
+            <div class="card-footer d-flex justify-content-between">
+              <button class="btn btn-success btn-sm">Add to Cart</button>
+              <a href="{% url 'details' datas.slug %}?from=explore"><button class="btn btn-outline-secondary btn-sm">View Details</button></a>
+            </div>
+          </div>
+        </div>
+      
+      {% endfor %}
+    </div>
+  {% endfor %}
+</div>
+
+{% endblock main %}

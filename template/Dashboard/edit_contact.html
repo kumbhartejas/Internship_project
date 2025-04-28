@@ -1,0 +1,38 @@
+{% extends 'Dashboard/dbase.html' %} 
+
+{% block dash %}
+<div class="container mt-5">
+    <h2>Edit Contact</h2>
+    <form method="post">
+        {% csrf_token %}
+
+        <div class="mb-3">
+            <label>First Name</label>
+            <input type="text" class="form-control" name="name" value="{{ contact.name }}" required>
+        </div>
+
+        <div class="mb-3">
+            <label>Last Name</label>
+            <input type="text" class="form-control" name="lastname" value="{{ contact.lastname }}" required>
+        </div>
+
+        <div class="mb-3">
+            <label>Email</label>
+            <input type="email" class="form-control" name="email" value="{{ contact.email }}" required>
+        </div>
+
+        <div class="mb-3">
+            <label>Subject</label>
+            <input type="text" class="form-control" name="subject" value="{{ contact.subject }}" required>
+        </div>
+
+        <div class="mb-3">
+            <label>Message</label>
+            <textarea class="form-control" name="message">{{ contact.message }}</textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+        <a href="{% url 'contactform' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock dash %}
