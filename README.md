@@ -62,41 +62,42 @@ The website follows Django’s **Model-View-Template (MVT)** architecture:
 ✅ Fully functional dashboard for managing content  
 
 ## 📸 Screenshots
+<div style="display: flex; gap: 40px;">
 
-<table>
-  <tr>
-    <td>
+  <!-- First Table -->
+  <div>
 
-      <!-- First Table -->
-      <table>
-        <tr><th>Page</th><th>Preview</th></tr>
-        <tr><td>Homepage</td><td><img src="./screenshots/home.png" width="200"/></td></tr>
-        <tr><td>Explore Dishes</td><td><img src="./screenshots/explore.png" width="200"/></td></tr>
-        <tr><td>Booking Form</td><td><img src="./screenshots/booking.png" width="200"/></td></tr>
-        <tr><td>Contact Form</td><td><img src="./screenshots/contact.png" width="200"/></td></tr>
-        <tr><td>Search Results</td><td><img src="./screenshots/search_results.png" width="200"/></td></tr>
-        <tr><td>Details Page</td><td><img src="./screenshots/details.png" width="200"/></td></tr>
-        <tr><td>Admin Dashboard</td><td><img src="./screenshots/admin.png" width="200"/></td></tr>
-      </table>
+  <table>
+    <tr><th>Page</th><th>Preview</th></tr>
+    <tr><td>Homepage</td><td><img src="./screenshots/home.png" width="150"/></td></tr>
+    <tr><td>Explore Dishes</td><td><img src="./screenshots/explore.png" width="150"/></td></tr>
+    <tr><td>Booking Form</td><td><img src="./screenshots/booking.png" width="150"/></td></tr>
+    <tr><td>Contact Form</td><td><img src="./screenshots/contact.png" width="150"/></td></tr>
+    <tr><td>Search Results</td><td><img src="./screenshots/search_results.png" width="150"/></td></tr>
+    <tr><td>Details Page</td><td><img src="./screenshots/details.png" width="150"/></td></tr>
+    <tr><td>Admin Dashboard</td><td><img src="./screenshots/admin.png" width="150"/></td></tr>
+  </table>
 
-    </td>
-    <td style="padding-left: 40px;">
+  </div>
 
-      <!-- Second Table -->
-      <table>
-        <tr><th>Feature</th><th>Status</th></tr>
-        <tr><td>User Login</td><td>✅ Implemented</td></tr>
-        <tr><td>Search Filter</td><td>✅ Implemented</td></tr>
-        <tr><td>Booking Calendar</td><td>🚧 In Progress</td></tr>
-        <tr><td>Admin Panel</td><td>✅ Completed</td></tr>
-        <tr><td>Feedback Form</td><td>❌ Not Started</td></tr>
-        <tr><td>Dark Mode</td><td>✅ Implemented</td></tr>
-        <tr><td>Mobile Support</td><td>✅ Fully Responsive</td></tr>
-      </table>
+  <!-- Second Table -->
+  <div>
 
-    </td>
-  </tr>
-</table>
+  <table>
+    <tr><th>Feature</th><th>Status</th></tr>
+    <tr><td>User Login</td><td>✅ Implemented</td></tr>
+    <tr><td>Search Filter</td><td>✅ Implemented</td></tr>
+    <tr><td>Booking Calendar</td><td>🚧 In Progress</td></tr>
+    <tr><td>Admin Panel</td><td>✅ Completed</td></tr>
+    <tr><td>Feedback Form</td><td>❌ Not Started</td></tr>
+    <tr><td>Dark Mode</td><td>✅ Implemented</td></tr>
+    <tr><td>Mobile Support</td><td>✅ Fully Responsive</td></tr>
+  </table>
+
+  </div>
+
+</div>
+
 
 
 
