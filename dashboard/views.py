@@ -140,6 +140,7 @@ def booking(request):
     bookf={'bf':book}
     return render(request,'Dashboard/bookingForm.html',bookf)
 
+@login_required(login_url='login')
 def edit_book(request, id):
     booking = get_object_or_404(Booking, id=id)
 
@@ -156,12 +157,14 @@ def edit_book(request, id):
     return render(request, 'Dashboard/edit_booking.html', {'booking': booking})
 
 # Delete View
+@login_required(login_url='login')
 def delete_book(request, id):
     booking = get_object_or_404(Booking, id=id)
     booking.delete()
     return redirect('bookingform')  
 
 
+@login_required(login_url='login')
 def edit_contacts(request, id):
     contact = get_object_or_404(m_form, id=id)  # Adjust model name if needed
     if request.method == 'POST':
@@ -174,6 +177,7 @@ def edit_contacts(request, id):
         return redirect('contactform')  # After edit, redirect back to the table
     return render(request, 'Dashboard/edit_contact.html', {'contact': contact})
 
+@login_required(login_url='login')
 def delete_contacts(request, id):
     contact = get_object_or_404(m_form, id=id)
     contact.delete()
