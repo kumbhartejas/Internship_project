@@ -4,7 +4,7 @@
 
 A full-featured, responsive restaurant website built using the **Python Django** framework. This project was developed as part of a two-month internship to simulate real-world restaurant management with modern web technologies.
 
-![Homepage Screenshot](./screenshots/homepage.png)
+![Homepage Screenshot](./screenshots/home.png)
 
 ## 🚀 Project Overview
 
