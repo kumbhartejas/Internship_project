@@ -22,7 +22,7 @@ Admin users can:
 
 ## 🛠️ Tech Stack
 
-| Technology    | Role                        |
+| Technology    | Role                        |   
 |---------------|-----------------------------|
 | Python        | Core backend logic          |
 | Django        | Web framework (MVT pattern) |
@@ -65,7 +65,7 @@ The website follows Django’s **Model-View-Template (MVT)** architecture:
 
 | Page                | Preview                         |
 |---------------------|----------------------------------|
-| Homepage            |<img src="./screenshots/home.png" alt="Homepage Screenshot" width="200"/>|
+| Homepage            |<img src="./screenshots/home.png" alt="Homepage Screenshot" width="200"/>|  | Homepage            |<img src="./screenshots/home.png" alt="Homepage Screenshot" width="200"/>|
 | Explore Dishes      | ![](./screenshots/explore.png)  |
 | Booking Form        | ![](./screenshots/booking.png)  |
 | contact Form        | ![](./screenshots/contact.png)  |
