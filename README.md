@@ -64,13 +64,13 @@ The website follows Django’s **Model-View-Template (MVT)** architecture:
 ## 📸 Screenshots
 | Page              | Preview                           | Feature         | Status             |
 |-------------------|------------------------------------|------------------|---------------------|
-| Homepage          | ![](./screenshots/home.png)        | User Login       |  ![](./screenshots/home.png)        |
-| Explore Dishes    | ![](./screenshots/explore.png)     | Search Filter    | ✅ Implemented      |
-| Booking Form      | ![](./screenshots/booking.png)     | Booking Calendar | 🚧 In Progress      |
-| Contact Form      | ![](./screenshots/contact.png)     | Admin Panel      | ✅ Completed        |
-| Search Results    | ![](./screenshots/search_results.png) | Feedback Form    | ❌ Not Started      |
-| Details Page      | ![](./screenshots/details.png)     | Dark Mode        | ✅ Implemented      |
-| Admin Dashboard   | ![](./screenshots/admin.png)       | Mobile Support   | ✅ Fully Responsive |
+| Homepage          | ![](./screenshots/home.png)        | Dashboard   |  ![](./screenshots/dashboard.png)        |
+| Explore Dishes    | ![](./screenshots/explore dish.png)     | Add Section   | ![](./screenshots/add section.png)     |
+| Reservation Form      | ![](./screenshots/booking.png)     | Add items | ![](./screenshots/add items.png)|
+| Contact Form      | ![](./screenshots/contact us form.png)     | Contact Form Data  | ![](./screenshots/contact message.png)       |
+| Search Results    | ![](./screenshots/search result.png) | Reservation form Data  | ![](./screenshots/Reservation form data.png)    |
+| Details Page      | ![](./screenshots/Details page.png)     | Edit Item Data      | ![](./screenshots/edit item data.png)     |
+| login page   | ![](./screenshots/login.png)       
 
 
 
