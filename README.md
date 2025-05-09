@@ -65,7 +65,7 @@ The website follows Django’s **Model-View-Template (MVT)** architecture:
 
 | Page                | Preview                         |
 |---------------------|----------------------------------|
-| Homepage            | ![](./screenshots/home.png)     |
+| Homepage            | <img src="./screenshots/home.png" alt="Homepage Screenshot" width="500"/>   |
 | Explore Dishes      | ![](./screenshots/explore.png)  |
 | Booking Form        | ![](./screenshots/booking.png)  |
 | contact Form        | ![](./screenshots/contact.png)  |
