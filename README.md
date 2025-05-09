@@ -68,6 +68,9 @@ The website follows Django’s **Model-View-Template (MVT)** architecture:
 | Homepage            | ![](./screenshots/home.png)     |
 | Explore Dishes      | ![](./screenshots/explore.png)  |
 | Booking Form        | ![](./screenshots/booking.png)  |
+| contact Form        | ![](./screenshots/contact.png)  |
+| search results      | ![](./screenshots/contact.png)  |
+| details page        | ![](./screenshots/contact.png)  |
 | Admin Dashboard     | ![](./screenshots/admin.png)    |
 
 > *(Place screenshots inside a `/screenshots` folder in your repo.)*
@@ -76,24 +79,40 @@ The website follows Django’s **Model-View-Template (MVT)** architecture:
 
 - **Company:** Elite Softwares Pvt. Ltd, Pune  
 - **Intern:** Tejas Sanjay Kumbhar  
-- **Guide:** Ms. Payal Babar  
 - **Duration:** Dec 2024 – Feb 2025  
 - **Domain:** Full Stack Web Development  
 
 ## 💡 Future Improvements
 
-- 📱 Mobile app integration
-- 📊 Admin analytics dashboard
-- 💬 AI-powered chatbot
 - 💳 Online payment gateway
 - 🤖 Recommendation engine
-- 🔐 Biometric admin authentication
+- Add to cart 
 
 ## 📜 License
 
 This project is for academic and demonstration purposes only. Contact the author for permission before reuse.
 
----
+## 📥 How to Download the Project
+
+### 📦 Clone the Repository
+
+```bash
+-git clone https://github.com/kumbhartejas/Internship_project
+or Download zip file
+-cd Restaurant
+-Download requirements:
+    pip install django
+    pip install pillow
+-run following comands
+     python manage.py makemigrations
+     python manage.py migrate
+-Create a admin id and password by running following command
+     python manage.py createsuperuser
+-To run the project type following command in cmd
+    python manage.py runserver
+-Login to admin Dashboard with the help of id and password created
+-For creating more Login creadentials hit the path http://127.0.0.1:8000/admin/ and create new user
+
 
 🧑‍💻 Developed with ❤️ by **Tejas Sanjay Kumbhar**
 
