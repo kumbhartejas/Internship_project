@@ -62,7 +62,7 @@ The website follows Django’s **Model-View-Template (MVT)** architecture:
 ✅ Fully functional dashboard for managing content  
 
 ## 📸 Screenshots
-<div style="display: flex; gap: 40px;">
+<div style="display: flex; gap: 5px;">
 
   <!-- First Table -->
   <div>
