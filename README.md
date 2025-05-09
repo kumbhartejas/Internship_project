@@ -65,11 +65,11 @@ The website follows Django’s **Model-View-Template (MVT)** architecture:
 | Page              | Preview                           | Feature         | Status             |
 |-------------------|------------------------------------|------------------|---------------------|
 | Homepage          | ![](./screenshots/home.png)        | Dashboard   |  ![](./screenshots/dashboard.png)        |
-| Explore Dishes    | ![](./screenshots/explore dish.png)     | Add Section   | ![](./screenshots/add section.png)     |
-| Reservation Form      | ![](./screenshots/booking.png)     | Add items | ![](./screenshots/add items.png)|
-| Contact Form      | ![](./screenshots/contact us form.png)     | Contact Form Data  | ![](./screenshots/contact message.png)       |
-| Search Results    | ![](./screenshots/search result.png) | Reservation form Data  | ![](./screenshots/Reservation form data.png)    |
-| Details Page      | ![](./screenshots/Details page.png)     | Edit Item Data      | ![](./screenshots/edit item data.png)     |
+| Explore Dishes    | ![](./screenshots/explore_dish.png)     | Add Section   | ![](./screenshots/add_section.png)     |
+| Reservation Form      | ![](./screenshots/booking.png)     | Add items | ![](./screenshots/add_items.png)|
+| Contact Form      | ![](./screenshots/contact_us_form.png)     | Contact Form Data  | ![](./screenshots/contact_message.png)       |
+| Search Results    | ![](./screenshots/search_result.png) | Reservation form Data  | ![](./screenshots/Reservation form data.png)    |
+| Details Page      | ![](./screenshots/Details_page.png)     | Edit Item Data      | ![](./screenshots/edit_item_data.png)     |
 | login page   | ![](./screenshots/login.png)       
 
 
