@@ -114,7 +114,7 @@ or Download zip file
     python manage.py runserver
 -Login to admin Dashboard with the help of id and password created
 -For creating more Login creadentials hit the path http://127.0.0.1:8000/admin/ and create new user
-
+```
 
 🧑‍💻 Developed with ❤️ by **Tejas Sanjay Kumbhar**
 
