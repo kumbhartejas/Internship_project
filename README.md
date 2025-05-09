@@ -63,17 +63,43 @@ The website follows Django’s **Model-View-Template (MVT)** architecture:
 
 ## 📸 Screenshots
 
-| Page                | Preview                         |
-|---------------------|----------------------------------|
-| Homepage            |<img src="./screenshots/home.png" alt="Homepage Screenshot" width="200"/>|  | Homepage            |<img src="./screenshots/home.png" alt="Homepage Screenshot" width="200"/>|
-| Explore Dishes      | ![](./screenshots/explore.png)  |
-| Booking Form        | ![](./screenshots/booking.png)  |
-| contact Form        | ![](./screenshots/contact.png)  |
-| search results      | ![](./screenshots/contact.png)  |
-| details page        | ![](./screenshots/contact.png)  |
-| Admin Dashboard     | ![](./screenshots/admin.png)    |
+<table>
+  <tr>
+    <td>
 
-> *(Place screenshots inside a `/screenshots` folder in your repo.)*
+      <!-- First Table -->
+      <table>
+        <tr><th>Page</th><th>Preview</th></tr>
+        <tr><td>Homepage</td><td><img src="./screenshots/home.png" width="200"/></td></tr>
+        <tr><td>Explore Dishes</td><td><img src="./screenshots/explore.png" width="200"/></td></tr>
+        <tr><td>Booking Form</td><td><img src="./screenshots/booking.png" width="200"/></td></tr>
+        <tr><td>Contact Form</td><td><img src="./screenshots/contact.png" width="200"/></td></tr>
+        <tr><td>Search Results</td><td><img src="./screenshots/search_results.png" width="200"/></td></tr>
+        <tr><td>Details Page</td><td><img src="./screenshots/details.png" width="200"/></td></tr>
+        <tr><td>Admin Dashboard</td><td><img src="./screenshots/admin.png" width="200"/></td></tr>
+      </table>
+
+    </td>
+    <td style="padding-left: 40px;">
+
+      <!-- Second Table -->
+      <table>
+        <tr><th>Feature</th><th>Status</th></tr>
+        <tr><td>User Login</td><td>✅ Implemented</td></tr>
+        <tr><td>Search Filter</td><td>✅ Implemented</td></tr>
+        <tr><td>Booking Calendar</td><td>🚧 In Progress</td></tr>
+        <tr><td>Admin Panel</td><td>✅ Completed</td></tr>
+        <tr><td>Feedback Form</td><td>❌ Not Started</td></tr>
+        <tr><td>Dark Mode</td><td>✅ Implemented</td></tr>
+        <tr><td>Mobile Support</td><td>✅ Fully Responsive</td></tr>
+      </table>
+
+    </td>
+  </tr>
+</table>
+
+
+
 
 ## 🏢 Internship Details
 
