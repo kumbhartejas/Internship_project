@@ -101,7 +101,7 @@ This project is for academic and demonstration purposes only. Contact the author
 ```bash
 -git clone https://github.com/kumbhartejas/Internship_project
 or Download zip file
--cd Restaurant
+-cd Internship_project-main           or main folder name
 -Download requirements:
     pip install django
     pip install pillow
