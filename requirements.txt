@@ -1,2 +1,7 @@
 django
 pillow
+Django>=5.0
+gunicorn
+whitenoise
+psycopg2-binary
+
